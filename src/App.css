@@ -1,38 +1,465 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+:root {
+    --twitch-primary: #bf94ff;
+    --background: #0e0e10;
+    --text-white: #fff;
+    --text-gray: #a5a5a5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+    background-color: var(--background);
+    color: var(--text-white);
+}
+
+header {
+    background-color: #18181B;
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-white);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 0 15px #000;
+}
+
+#logo-img {
+    width: 22px;
+    height: 26px;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+}
+
+#profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50px;
+}
+
+#row1,
+#row2,
+#row3 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.nav-item {
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#purple {
+    color: var(--twitch-primary);
+}
+
+#search {
+    padding: 0.45rem;
+    background-color: #18181B;
+    border: 1px solid var(--text-gray);
+    border-radius: 10px 0 0 10px;
+    color: #fff;
+    width: 250px;
+}
+
+#search-icon {
+    padding: 0.25rem;
+    background-color: #18181B;
+    border: 1px solid var(--text-gray);
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#heart-icon {
+    margin: 0.8rem 0 0.8rem 0;
+}
+
+nav {
+    padding-top: 0.5rem;
+    width: 3rem;
+    height: 100vh;
+    background-color: #18181B;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 45px;
+}
+
+.side-nav-img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 0.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: var(--twitch-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 3rem 0 3rem 0;
+}
+
+#pagetitle {
+    color: var(--text-white) !important;
+    letter-spacing: -4px !important;
+    font-weight: 900 !important;
+    font-size: 4rem !important;
+    text-align: start !important;
+    margin: 5rem 0 1rem 10% !important;
+}
+
+#list {
+    display: flex;
+    flex-direction: row;
+    margin: 1.5rem 0 1.5rem 10% !important;
+}
+
+.list-item {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    list-style: none;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.list-item:first-child {
+    color: var(--twitch-primary);
+}
+
+.list-item:hover {
+    color: var(--twitch-primary);
+}
+
+.streams {
+    width: 80%;
+    margin: 8px auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 0.8rem;
+    row-gap: 3rem;
+}
+
+.stream-streams-container {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+}
+
+.stream-streams-container .live {
+    background-color: red;
+    color: #ffffff;
+    display: block;
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    z-index: 1;
+    font-weight: 500;
+}
+
+.stream-streams-container img {
+    width: 100%;
+    height: max-content;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.stream-streams-container h3 {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    font-weight: 300;
+}
+
+.stream-streams-container h4 {
+    font-size: 1rem;
+    color: var(--text-white);
+    line-height: 1.5;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    font-weight: 300;
+}
+
+.stream-streams-container p {
+    word-wrap: break-word;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    color: var(--text-white);
+    display: block;
+    font-size: 0.8rem;
+    z-index: 1;
+    font-weight: 300;
+    width: 275px;
+}
+
+.stream-streams-container svg {
+    color: var(--text-white);
+    position: unset;
+    display: inline-block;
+    vertical-align: middle;
+    align-items: center;
+    z-index: 1;
+}
+
+.stream-streams-container .view-count {
+    font-size: 0.8rem;
+    color: var(--text-white);
+    line-height: 1.5;
+    margin-top: 0;
+    margin-left: 5px;
+    font-weight: 300;
+    display: inline-block;
+}
+
+.stream-profile-container {
+    width: 100%;
+    height: 390px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.stream-profile-container .border {
+    z-index: 1;
+    position: absolute;
+
+    top:0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(180deg, #d80b0b, 90%, #ffb6b6);
+    animation: spin 3000ms linear infinite;
+    animation-delay: -1s;
+  
+    border-radius: 100%;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
+
+
+.stream-profile-container img {
+    margin: 0.5rem 0 0 0.5rem;
+    cursor: pointer;
+    
+    width: 95%;
+    height: 95%;
+    position: relative;
+
+    z-index: 2;
+    background: #2f2f2f;
+    border-radius: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.stream-profile-container h3 {
+    font-size: 1.4rem;
+    color: var(--text-white);
+    line-height: 1.5;
+    z-index: 3;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    font-weight: 300;
 }
 
-.App-link {
-  color: #61dafb;
+.stream-profile-container .live {
+margin-top: 0.8rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.stream-profile-container h4 {
+    font-size: 1rem;
+    color: var(--text-white);
+    line-height: 1.5;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    font-weight: 300;
+}
+
+.stream-profile-container p {
+    word-wrap: break-word;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    color: var(--text-white);
+    display: block;
+    font-size: 0.8rem;
+    z-index: 1;
+    font-weight: 300;
+    width: 275px;
+}
+
+.stream-profile-container svg {
+    color: var(--text-white);
+    position: unset;
+    display: inline-block;
+    vertical-align: middle;
+    align-items: center;
+    z-index: 1;
+}
+
+.stream-profile-container .view-count {
+    font-size: 0.8rem;
+    color: var(--text-white);
+    line-height: 1.5;
+    margin-top: 0;
+    margin-left: 5px;
+    font-weight: 300;
+    display: inline-block;
+}
+
+.iframe-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* adjust as needed, higher values are on top of lower values */
+}
+
+.iframe-container iframe {
+    width: 100%;
+    /* adjust the width as needed */
+    height: 100%;
+    /* adjust the height as needed */
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* optional box shadow for a subtle border */
+}
+
+.hidden {
+    display: none;
+}
+
+/* MAKE THE EMBED GREATER AGAIN! */
+/* #twitch-embed {
+    margin: 3rem 0 0 3rem;
+} */
+
+.iframe-container {
+    display: none;
+    /* Initially hide the container */
+}
+
+.iframe-container.show {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    padding: 3rem 0 0 3rem;
+    display: block;
+    /* Show the container when initialized */
+}
+
+@media screen and (max-width:1600px) {
+    .streams {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width:1300px) {
+    .streams {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width:1000px) {
+    header {
+        height: 3rem;
+    }
+
+    .streams {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #purple {
+        display: none;
+    }
+
+    #not-purple {
+        display: none;
+    }
+
+    #row2,
+    #row3 {
+        display: none;
+    }
+
+    #dots {
+        position: absolute;
+        right: 0;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .streams {
+        width: 90%;
+    }
+
+    #list {
+        display: block;
+        margin-left: 5% !important;
+    }
+
+    #pagetitle,
+    #top-20 {
+        margin-left: 5% !important;
+    }
+
+    nav {
+        display: none;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .streams {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
