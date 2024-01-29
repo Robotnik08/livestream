@@ -243,11 +243,7 @@ h1 {
 
 .stream-profile-container {
     width: 100%;
-<<<<<<< HEAD
     height: 450px;
-=======
-    height: 390px;
->>>>>>> 4f9162ad33380c1f139611f88d3d1acd1677b50d
     overflow: hidden;
     position: relative;
 }
@@ -306,11 +302,7 @@ h1 {
 }
 
 .stream-profile-container .live {
-<<<<<<< HEAD
     margin-top: 0.5rem;
-=======
-margin-top: 0.8rem;
->>>>>>> 4f9162ad33380c1f139611f88d3d1acd1677b50d
 }
 
 .stream-profile-container h4 {
@@ -388,15 +380,9 @@ margin-top: 0.8rem;
 }
 
 /* MAKE THE EMBED GREATER AGAIN! */
-<<<<<<< HEAD
 #twitch-embed {
     position: absolute;
 }
-=======
-/* #twitch-embed {
-    margin: 3rem 0 0 3rem;
-} */
->>>>>>> 4f9162ad33380c1f139611f88d3d1acd1677b50d
 
 .iframe-container {
     display: none;
